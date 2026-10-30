@@ -1,0 +1,73 @@
+:root {
+  --amarillo: #f2d521;
+  --morado: #8b4a94;
+  --borde: #1a1a1a;
+  --fondo: #f4f6f8;
+  box-sizing: border-box;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  background: var(--fondo);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 12px;
+}
+
+.pagina {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #000;
+  padding: 2px;
+}
+
+.fila { display: flex; gap: 6px; background: #000; }
+
+.fila > div { border: 2px solid var(--borde); }
+
+.a { background: var(--amarillo); flex: 0 0 var(--w); }
+.m { background: var(--morado); flex: 1 1 auto; }
+
+/* ===== CELULAR (por defecto): 6 bloques ===== */
+.fila { min-height: 90px; }
+.f1 { --w: 52%; }
+.f2 { --w: 51%; }
+.f3 { --w: 52%; }
+.f5 { --w: 51%; }
+
+/* Fila 4: morado completo y amarillo completo */
+.f4 { flex-direction: column-reverse; min-height: 0; }
+.f4 > div { flex: 1 1 auto; min-height: 90px; }
+
+/* ===== TABLET: 768px a 1199px ===== */
+@media (min-width: 768px) {
+  body { padding: 20px; }
+  .pagina { max-width: 760px; }
+  .fila { min-height: 100px; }
+  .f4 { flex-direction: row; }
+  .f4 > div { min-height: 0; }
+  .f1 { --w: 25%; }
+  .f2 { --w: 30%; }
+  .f3 { --w: 50%; }
+  .f4 { --w: 33%; }
+  .f5 { --w: 28%; }
+  .f4 .a { flex: 0 0 var(--w); }
+  :root { --amarillo: #fff000; --morado:  #1fb5a8
+    ; }
+}
+
+/* ===== COMPUTADOR: 1200px en adelante ===== */
+@media (min-width: 1200px) {
+  body { padding: 28px; }
+  .pagina { max-width: 1440px; }
+  .fila { min-height: 120px; }
+  .f1 { --w: 72%; }
+  .f2 { --w: 32%; }
+  .f3 { --w: 72%; }
+  .f4 { --w: 32%; }
+  .f5 { --w: 48%; }
+  :root { --amarillo: #f2d521; --morado: #8b4a94; }
+}
